@@ -216,7 +216,7 @@ async def start(client:Client, message):
                 )
         await client.send_message(
             chat_id=message.from_user.id,
-            text="<b>🙁 ғɪʀꜱᴛ ᴊᴏɪɴ ᴏᴜʀ ʙᴀᴄᴋᴜᴘ ᴄʜᴀɴɴᴇʟ ᴛʜᴇɴ ʏᴏᴜ ᴡɪʟʟ ɢᴇᴛ ᴍᴏᴠɪᴇ, ᴏᴛʜᴇʀᴡɪꜱᴇ ʏᴏᴜ ᴡɪʟʟ ɴᴏᴛ ɢᴇᴛ ɪᴛ.\n\nᴄʟɪᴄᴋ ᴊᴏɪɴ ɴᴏᴡ ʙᴜᴛᴛᴏɴ 👇</b>",
+            text="<b>First Join Our Backup Channel Then You Will Get Movie, Otherwise You Will Not Get It.\n\nClick Join Button</b>",
             reply_markup=InlineKeyboardMarkup(btn),
             parse_mode=enums.ParseMode.HTML
         )
@@ -224,20 +224,20 @@ async def start(client:Client, message):
 
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
-            InlineKeyboardButton('⇆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs ⇆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
+            InlineKeyboardButton('Add Me In You Groups', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
         ],[
-            InlineKeyboardButton('⚙ ꜰᴇᴀᴛᴜʀᴇs', callback_data='features'),
-            InlineKeyboardButton('🎗️ ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='premium'),
+            InlineKeyboardButton('Features', callback_data='features'),
+            InlineKeyboardButton('Buy Premium', callback_data='premium'),
         ],
         [
-            InlineKeyboardButton('🎁 ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ ғʀᴇᴇ 🎁', callback_data=f'free_premium#{message.from_user.id}')
+            InlineKeyboardButton('Get Free Premium', callback_data=f'free_premium#{message.from_user.id}')
         ],
         [
-            InlineKeyboardButton('🎭 ʏᴏᴜʀ ᴘᴏɪɴᴛs ✨', callback_data=f'point#{message.from_user.id}'),
-            InlineKeyboardButton('🫠 ᴀʙᴏᴜᴛ 🚩', callback_data='about')
+            InlineKeyboardButton('You Points ', callback_data=f'point#{message.from_user.id}'),
+            InlineKeyboardButton('About', callback_data='about')
         ],
         [
-            InlineKeyboardButton('🤞🏻 ᴇᴀʀɴ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ 🤡', callback_data='earn')
+            InlineKeyboardButton('Earn Money With Bot', callback_data='earn')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         return await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
@@ -266,9 +266,9 @@ async def start(client:Client, message):
             temp.CHAT[user_id] = grp_id
             verify = await get_shortlink(f"https://telegram.me/{temp.U_NAME}?start=notcopy_{user_id}_{verify_id}_{file_id}", grp_id, is_second_shortener, is_third_shortener , pm_mode=pm_mode)
             buttons = [[
-                InlineKeyboardButton(text="♻️ ᴠᴇʀɪғʏ 🎭", url=verify)
+                InlineKeyboardButton(text="Verify", url=verify)
             ],[
-                InlineKeyboardButton(text="ʜᴏᴡ ᴛᴏ ᴠᴇʀɪғʏ ❓", url=settings['tutorial']),
+                InlineKeyboardButton(text="How To Verify", url=settings['tutorial']),
             ]]
             reply_markup=InlineKeyboardMarkup(buttons)
             if await db.user_verified(user_id): 
@@ -290,7 +290,7 @@ async def start(client:Client, message):
         _, key = data.split("_", 1)
         files = temp.FILES_ID.get(key)
         if not files:
-            await message.reply_text("<b>⚠️ ᴀʟʟ ꜰɪʟᴇs ɴᴏᴛ ꜰᴏᴜɴᴅ ⚠️</b>")
+            await message.reply_text("<b>All Files Not Found</b>")
             return
         files_to_delete = []
         for file in files:
@@ -304,7 +304,7 @@ async def start(client:Client, message):
                 file_caption=file.caption
             )
             btn = [[
-                InlineKeyboardButton("✛ ᴡᴀᴛᴄʜ & ᴅᴏᴡɴʟᴏᴀᴅ ✛", callback_data=f'stream#{file.file_id}')
+                InlineKeyboardButton("Wath & Download", callback_data=f'stream#{file.file_id}')
             ]]
             toDel = await client.send_cached_media(
                 chat_id=message.from_user.id,
@@ -314,8 +314,8 @@ async def start(client:Client, message):
             )
             files_to_delete.append(toDel)
 
-        delCap = "<b>ᴀʟʟ {} ғɪʟᴇs ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ᴀғᴛᴇʀ {} ᴛᴏ ᴀᴠᴏɪᴅ ᴄᴏᴘʏʀɪɢʜᴛ ᴠɪᴏʟᴀᴛɪᴏɴs!</b>".format(len(files_to_delete), f'{FILE_AUTO_DEL_TIMER / 60} ᴍɪɴᴜᴛᴇs' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} sᴇᴄᴏɴᴅs')
-        afterDelCap = "<b>ᴀʟʟ {} ғɪʟᴇs ᴀʀᴇ ᴅᴇʟᴇᴛᴇᴅ ᴀғᴛᴇʀ {} ᴛᴏ ᴀᴠᴏɪᴅ ᴄᴏᴘʏʀɪɢʜᴛ ᴠɪᴏʟᴀᴛɪᴏɴs!</b>".format(len(files_to_delete), f'{FILE_AUTO_DEL_TIMER / 60} ᴍɪɴᴜᴛᴇs' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} sᴇᴄᴏɴᴅs')
+        delCap = "<b>All {} Files Will Be Deleted {} To Avoid Copyright Violation!</b>".format(len(files_to_delete), f'{FILE_AUTO_DEL_TIMER / 60} Minutes' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} Seconds')
+        afterDelCap = "<b>All {} Files Are Deleted After {} To Avoid Copyright Violation!</b>".format(len(files_to_delete), f'{FILE_AUTO_DEL_TIMER / 60} Minutes' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} Secons')
         replyed = await message.reply(
             delCap
         )
@@ -334,7 +334,7 @@ async def start(client:Client, message):
     files_ = await get_file_details(file_id)           
     if not files_:
         pre, file_id = ((base64.urlsafe_b64decode(data + "=" * (-len(data) % 4))).decode("ascii")).split("_", 1)
-        return await message.reply('<b>⚠️ ᴀʟʟ ꜰɪʟᴇs ɴᴏᴛ ꜰᴏᴜɴᴅ ⚠️</b>')
+        return await message.reply('<b>All Files Not Found</b>')
     files = files_[0]
     settings = await get_settings(grp_id , pm_mode=pm_mode)
     CAPTION = settings['caption']
@@ -344,7 +344,7 @@ async def start(client:Client, message):
         file_caption=files.caption
     )
     btn = [[
-        InlineKeyboardButton("✛ ᴡᴀᴛᴄʜ & ᴅᴏᴡɴʟᴏᴀᴅ ✛", callback_data=f'stream#{file_id}')
+        InlineKeyboardButton("Watch & Download", callback_data=f'stream#{file_id}')
     ]]
     toDel=await client.send_cached_media(
         chat_id=message.from_user.id,
@@ -352,8 +352,8 @@ async def start(client:Client, message):
         caption=f_caption,
         reply_markup=InlineKeyboardMarkup(btn)
     )
-    delCap = "<b>ʏᴏᴜʀ ғɪʟᴇ ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ᴀғᴛᴇʀ {} ᴛᴏ ᴀᴠᴏɪᴅ ᴄᴏᴘʏʀɪɢʜᴛ ᴠɪᴏʟᴀᴛɪᴏɴs!</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} ᴍɪɴᴜᴛᴇs' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} sᴇᴄᴏɴᴅs')
-    afterDelCap = "<b>ʏᴏᴜʀ ғɪʟᴇ ɪs ᴅᴇʟᴇᴛᴇᴅ ᴀғᴛᴇʀ {} ᴛᴏ ᴀᴠᴏɪᴅ ᴄᴏᴘʏʀɪɢʜᴛ ᴠɪᴏʟᴀᴛɪᴏɴs!</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} ᴍɪɴᴜᴛᴇs' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} sᴇᴄᴏɴᴅs') 
+    delCap = "<b>Your File Will Be Deleted After {} Kindly Forward This File In Saved Messages!</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} ᴍɪɴᴜᴛᴇs' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} sᴇᴄᴏɴᴅs')
+    afterDelCap = "<b>Youre File Is Deleted After {} To Avoid Copyright Violation !</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} ᴍɪɴᴜᴛᴇs' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} sᴇᴄᴏɴᴅs') 
     replyed = await message.reply(
         delCap,
         reply_to_message_id= toDel.id)
@@ -364,12 +364,12 @@ async def start(client:Client, message):
 @Client.on_message(filters.command('delete'))
 async def delete(bot, message):
     if message.from_user.id not in ADMINS:
-        await message.reply('ᴏɴʟʏ ᴛʜᴇ ʙᴏᴛ ᴏᴡɴᴇʀ ᴄᴀɴ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ... 😑')
+        await message.reply('Only The Bot Can Use This Command... ')
         return
     """Delete file from database"""
     reply = message.reply_to_message
     if reply and reply.media:
-        msg = await message.reply("ᴘʀᴏᴄᴇssɪɴɢ...⏳", quote=True)
+        msg = await message.reply("Precessing...", quote=True)
     else:
         await message.reply('Reply to file with /delete which you want to delete', quote=True)
         return
@@ -378,7 +378,7 @@ async def delete(bot, message):
         if media is not None:
             break
     else:
-        await msg.edit('<b>ᴛʜɪs ɪs ɴᴏᴛ sᴜᴘᴘᴏʀᴛᴇᴅ ꜰɪʟᴇ ꜰᴏʀᴍᴀᴛ</b>')
+        await msg.edit('<b>This Is Not Supported File Format</b>')
         return
     
     file_id, file_ref = unpack_new_file_id(media.file_id)
@@ -386,7 +386,7 @@ async def delete(bot, message):
         '_id': file_id,
     })
     if result.deleted_count:
-        await msg.edit('<b>ꜰɪʟᴇ ɪs sᴜᴄᴄᴇssꜰᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ ꜰʀᴏᴍ ᴅᴀᴛᴀʙᴀsᴇ 💥</b>')
+        await msg.edit('<b>File Ise Successfully Deleted From Database</b>')
     else:
         file_name = re.sub(r"(_|\-|\.|\+)", " ", str(media.file_name))
         result = await Media.collection.delete_many({
@@ -395,7 +395,7 @@ async def delete(bot, message):
             'mime_type': media.mime_type
             })
         if result.deleted_count:
-            await msg.edit('<b>ꜰɪʟᴇ ɪs sᴜᴄᴄᴇssꜰᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ ꜰʀᴏᴍ ᴅᴀᴛᴀʙᴀsᴇ 💥</b>')
+            await msg.edit('<b>File Is Successfully Deleted From Database</b>')
         else:
             result = await Media.collection.delete_many({
                 'file_name': media.file_name,
@@ -403,9 +403,9 @@ async def delete(bot, message):
                 'mime_type': media.mime_type
             })
             if result.deleted_count:
-                await msg.edit('<b>ꜰɪʟᴇ ɪs sᴜᴄᴄᴇssꜰᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ ꜰʀᴏᴍ ᴅᴀᴛᴀʙᴀsᴇ 💥</b>')
+                await msg.edit('<b>File Is Successfully Deleted From Database</b>')
             else:
-                await msg.edit('<b>ꜰɪʟᴇ ɴᴏᴛ ꜰᴏᴜɴᴅ ɪɴ ᴅᴀᴛᴀʙᴀsᴇ</b>')
+                await msg.edit('<b>File Is Not Found In Database</b>')
 
 @Client.on_message(filters.command('deleteall'))
 async def delete_all_index(bot, message):
@@ -413,67 +413,67 @@ async def delete_all_index(bot, message):
     if int(files) == 0:
         return await message.reply_text('Not have files to delete')
     btn = [[
-            InlineKeyboardButton(text="ʏᴇs", callback_data="all_files_delete")
+            InlineKeyboardButton(text="Yes", callback_data="all_files_delete")
         ],[
-            InlineKeyboardButton(text="ᴄᴀɴᴄᴇʟ", callback_data="close_data")
+            InlineKeyboardButton(text="Cancel", callback_data="close_data")
         ]]
     if message.from_user.id not in ADMINS:
-        await message.reply('ᴏɴʟʏ ᴛʜᴇ ʙᴏᴛ ᴏᴡɴᴇʀ ᴄᴀɴ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ... 😑')
+        await message.reply('Only Bot Owner Can Use This Command... ')
         return
-    await message.reply_text('<b>ᴛʜɪs ᴡɪʟʟ ᴅᴇʟᴇᴛᴇ ᴀʟʟ ɪɴᴅᴇxᴇᴅ ꜰɪʟᴇs.\nᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ??</b>', reply_markup=InlineKeyboardMarkup(btn))
+    await message.reply_text('<b>This Will Delete All Index File.\nDo You Want To Contenue??</b>', reply_markup=InlineKeyboardMarkup(btn))
 
 @Client.on_message(filters.command('settings'))
 async def settings(client, message):
     user_id = message.from_user.id if message.from_user else None
     if not user_id:
-        return await message.reply("<b>💔 ʏᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜꜱ ᴀᴅᴍɪɴ ʏᴏᴜ ᴄᴀɴ'ᴛ ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ...</b>")
+        return await message.reply("<b>You Are Anonymous Admin You Can't Use This Command...</b>")
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("<code>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ.</code>")
+        return await message.reply_text("<code>.</code>")
     grp_id = message.chat.id
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+        return await message.reply_text('<b>You Are Not Admin In This Group</b>')
     settings = await get_settings(grp_id)
     title = message.chat.title
     if settings is not None:
             buttons = [[
-                InlineKeyboardButton('ᴀᴜᴛᴏ ꜰɪʟᴛᴇʀ', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}'),
-                InlineKeyboardButton('ᴏɴ ✓' if settings["auto_filter"] else 'ᴏғғ ✗', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}')
+                InlineKeyboardButton('Auto Filter', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}'),
+                InlineKeyboardButton('On' if settings["auto_filter"] else 'Off ✗', callback_data=f'setgs#auto_filter#{settings["auto_filter"]}#{grp_id}')
             ],[
-                InlineKeyboardButton('ɪᴍᴅʙ', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}'),
-                InlineKeyboardButton('ᴏɴ ✓' if settings["imdb"] else 'ᴏғғ ✗', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}')
+                InlineKeyboardButton('Imdb', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}'),
+                InlineKeyboardButton('On' if settings["imdb"] else 'Off ✗', callback_data=f'setgs#imdb#{settings["imdb"]}#{grp_id}')
             ],[
-                InlineKeyboardButton('sᴘᴇʟʟ ᴄʜᴇᴄᴋ', callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}'),
-                InlineKeyboardButton('ᴏɴ ✓' if settings["spell_check"] else 'ᴏғғ ✗', callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}')
+                InlineKeyboardButton('Spell Check ', callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}'),
+                InlineKeyboardButton('On' if settings["spell_check"] else 'Off ✗', callback_data=f'setgs#spell_check#{settings["spell_check"]}#{grp_id}')
             ],[
-                InlineKeyboardButton('ᴀᴜᴛᴏ ᴅᴇʟᴇᴛᴇ', callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{grp_id}'),
-                InlineKeyboardButton(f'{get_readable_time(DELETE_TIME)}' if settings["auto_delete"] else 'ᴏғғ ✗', callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{grp_id}')
+                InlineKeyboardButton('Auto delete', callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{grp_id}'),
+                InlineKeyboardButton(f'{get_readable_time(DELETE_TIME)}' if settings["auto_delete"] else 'Off ✗', callback_data=f'setgs#auto_delete#{settings["auto_delete"]}#{grp_id}')
             ],[
-                InlineKeyboardButton('ʀᴇsᴜʟᴛ ᴍᴏᴅᴇ', callback_data=f'setgs#link#{settings["link"]}#{str(grp_id)}'),
-                InlineKeyboardButton('⛓ ʟɪɴᴋ' if settings["link"] else '🧲 ʙᴜᴛᴛᴏɴ', callback_data=f'setgs#link#{settings["link"]}#{str(grp_id)}')
+                InlineKeyboardButton('Result Mode', callback_data=f'setgs#link#{settings["link"]}#{str(grp_id)}'),
+                InlineKeyboardButton('Link' if settings["link"] else 'Button', callback_data=f'setgs#link#{settings["link"]}#{str(grp_id)}')
             ],[
-                InlineKeyboardButton('ᴠᴇʀɪғʏ', callback_data=f'setgs#is_verify#{settings["is_verify"]}#{grp_id}'),
-                InlineKeyboardButton('ᴏɴ ✓' if settings["is_verify"] else 'ᴏғғ ✗', callback_data=f'setgs#is_verify#{settings["is_verify"]}#{grp_id}')
+                InlineKeyboardButton('Verify', callback_data=f'setgs#is_verify#{settings["is_verify"]}#{grp_id}'),
+                InlineKeyboardButton('On' if settings["is_verify"] else 'Off ✗', callback_data=f'setgs#is_verify#{settings["is_verify"]}#{grp_id}')
             ],[
-                InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
+                InlineKeyboardButton('Close', callback_data='close_data')
             ]]
             await message.reply_text(
-                text=f"ᴄʜᴀɴɢᴇ ʏᴏᴜʀ sᴇᴛᴛɪɴɢs ꜰᴏʀ <b>'{title}'</b> ᴀs ʏᴏᴜʀ ᴡɪsʜ ✨",
+                text=f"Change Your Setting For <b>'{title}'</b> As Your Wish",
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=enums.ParseMode.HTML
             )
     else:
-        await message.reply_text('<b>ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ</b>')
+        await message.reply_text('<b>Somthing Went Wrong </b>')
 
 @Client.on_message(filters.command('set_template'))
 async def save_template(client, message):
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("<b>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...</b>")
+        return await message.reply_text("<b>Use Thi Command In Group...</b>")
     grp_id = message.chat.id
     title = message.chat.title
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+        return await message.reply_text('<b>You Are Not Admin In This Group</b>')
     try:
         template = message.text.split(" ", 1)[1]
     except:
@@ -484,12 +484,12 @@ async def save_template(client, message):
 @Client.on_message(filters.command("send"))
 async def send_msg(bot, message):
     if message.from_user.id not in ADMINS:
-        await message.reply('<b>ᴏɴʟʏ ᴛʜᴇ ʙᴏᴛ ᴏᴡɴᴇʀ ᴄᴀɴ ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ...</b>')
+        await message.reply('<b>Only Bot Owner Can Use This Command...</b>')
         return
     if message.reply_to_message:
         target_ids = message.text.split(" ")[1:]
         if not target_ids:
-            await message.reply_text("<b>ᴘʟᴇᴀꜱᴇ ᴘʀᴏᴠɪᴅᴇ ᴏɴᴇ ᴏʀ ᴍᴏʀᴇ ᴜꜱᴇʀ ɪᴅꜱ ᴀꜱ ᴀ ꜱᴘᴀᴄᴇ...</b>")
+            await message.reply_text("<b>Please Provide One Or More User Ids As A Space ...</b>")
             return
         out = "\n\n"
         success_count = 0
@@ -502,30 +502,30 @@ async def send_msg(bot, message):
                     await message.reply_to_message.copy(int(user.id))
                     success_count += 1
                 except Exception as e:
-                    out += f"‼️ ᴇʀʀᴏʀ ɪɴ ᴛʜɪꜱ ɪᴅ - <code>{target_id}</code> <code>{str(e)}</code>\n"
-            await message.reply_text(f"<b>✅️ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴍᴇꜱꜱᴀɢᴇ ꜱᴇɴᴛ ɪɴ `{success_count}` ɪᴅ\n<code>{out}</code></b>")
+                    out += f"‼️ Error In This Id - <code>{target_id}</code> <code>{str(e)}</code>\n"
+            await message.reply_text(f"<b> Successfully Message Sent In`{success_count}` Id\n<code>{out}</code></b>")
         except Exception as e:
-            await message.reply_text(f"<b>‼️ ᴇʀʀᴏʀ - <code>{e}</code></b>")
+            await message.reply_text(f"<b>‼️ Error - <code>{e}</code></b>")
     else:
-        await message.reply_text("<b>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ᴀꜱ ᴀ ʀᴇᴘʟʏ ᴛᴏ ᴀɴʏ ᴍᴇꜱꜱᴀɢᴇ, ꜰᴏʀ ᴇɢ - <code>/send userid1 userid2</code></b>")
+        await message.reply_text("<b>Ise This Command As A Repy To Any Message ,For Eg- <code>/send userid1 userid2</code></b>")
 
 @Client.on_message(filters.regex("#request"))
 async def send_request(bot, message):
     try:
         request = message.text.split(" ", 1)[1]
     except:
-        await message.reply_text("<b>‼️ ʏᴏᴜʀ ʀᴇǫᴜᴇsᴛ ɪs ɪɴᴄᴏᴍᴘʟᴇᴛᴇ</b>")
+        await message.reply_text("<b>‼️ Your Request Is Incomplete</b>")
         return
     buttons = [[
-        InlineKeyboardButton('👀 ᴠɪᴇᴡ ʀᴇǫᴜᴇꜱᴛ 👀', url=f"{message.link}")
+        InlineKeyboardButton('Biew Request', url=f"{message.link}")
     ],[
-        InlineKeyboardButton('⚙ sʜᴏᴡ ᴏᴘᴛɪᴏɴ ⚙', callback_data=f'show_options#{message.from_user.id}#{message.id}')
+        InlineKeyboardButton('Show Option', callback_data=f'show_options#{message.from_user.id}#{message.id}')
     ]]
     sent_request = await bot.send_message(REQUEST_CHANNEL, script.REQUEST_TXT.format(message.from_user.mention, message.from_user.id, request), reply_markup=InlineKeyboardMarkup(buttons))
     btn = [[
-         InlineKeyboardButton('✨ ᴠɪᴇᴡ ʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛ ✨', url=f"{sent_request.link}")
+         InlineKeyboardButton('View Your Request', url=f"{sent_request.link}")
     ]]
-    await message.reply_text("<b>✅ sᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛ ʜᴀꜱ ʙᴇᴇɴ ᴀᴅᴅᴇᴅ, ᴘʟᴇᴀꜱᴇ ᴡᴀɪᴛ ꜱᴏᴍᴇᴛɪᴍᴇ...</b>", reply_markup=InlineKeyboardMarkup(btn))
+    await message.reply_text("<b>Successfully Request Has Been Added , Please Wait Sometime...</b>", reply_markup=InlineKeyboardMarkup(btn))
 
 @Client.on_message(filters.command("search"))
 async def search_files(bot, message):
@@ -541,15 +541,15 @@ async def search_files(bot, message):
         return await message.reply_text(f"<b>Hey {message.from_user.mention}, give me a keyword along with the command to delete files.</b>")
     files, total = await get_bad_files(keyword)
     if int(total) == 0:
-        await message.reply_text('<i>I could not find any files with this keyword 😐</i>')
+        await message.reply_text('<i>I could not find any files with this keyword </i>')
         return 
     file_names = "\n\n".join(f"{index + 1}. {item['file_name']}" for index, item in enumerate(files))
-    file_data = f"🚫 Your search - '{keyword}':\n\n{file_names}"    
+    file_data = f" Your search - '{keyword}':\n\n{file_names}"    
     with open("file_names.txt", "w" , encoding='utf-8') as file:
         file.write(file_data)
     await message.reply_document(
         document="file_names.txt",
-        caption=f"<b>♻️ ʙʏ ʏᴏᴜʀ ꜱᴇᴀʀᴄʜ, ɪ ꜰᴏᴜɴᴅ - <code>{total}</code> ꜰɪʟᴇs</b>",
+        caption=f"<b>By Your Search, I Found - <code>{total}</code> Files</b>",
         parse_mode=enums.ParseMode.HTML
     )
     os.remove("file_names.txt")
@@ -557,28 +557,28 @@ async def search_files(bot, message):
 @Client.on_message(filters.command("deletefiles"))
 async def deletemultiplefiles(bot, message):
     if message.from_user.id not in ADMINS:
-        await message.reply('ᴏɴʟʏ ᴛʜᴇ ʙᴏᴛ ᴏᴡɴᴇʀ ᴄᴀɴ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ... 😑')
+        await message.reply('Only The Bot Owner Can Use This Command... ')
         return
     chat_type = message.chat.type
     if chat_type != enums.ChatType.PRIVATE:
-        return await message.reply_text(f"<b>ʜᴇʏ {message.from_user.mention}, ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴡᴏɴ'ᴛ ᴡᴏʀᴋ ɪɴ ɢʀᴏᴜᴘs. ɪᴛ ᴏɴʟʏ ᴡᴏʀᴋs ᴏɴ ᴍʏ ᴘᴍ !!</b>")
+        return await message.reply_text(f"<b>Hey {message.from_user.mention}, This Command Wont Work In Group. It Only Work On Pm !!</b>")
     else:
         pass
     try:
         keyword = message.text.split(" ", 1)[1]
     except:
-        return await message.reply_text(f"<b>ʜᴇʏ {message.from_user.mention}, ɢɪᴠᴇ ᴍᴇ ᴀ ᴋᴇʏᴡᴏʀᴅ ᴀʟᴏɴɢ ᴡɪᴛʜ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ ᴅᴇʟᴇᴛᴇ ꜰɪʟᴇs.</b>")
+        return await message.reply_text(f"<b>Hey {message.from_user.mention}, Give Me A Keyword Along With The Command To Delete Files.</b>")
     files, total = await get_bad_files(keyword)
     if int(total) == 0:
-        await message.reply_text('<i>ɪ ᴄᴏᴜʟᴅ ɴᴏᴛ ꜰɪɴᴅ ᴀɴʏ ꜰɪʟᴇs ᴡɪᴛʜ ᴛʜɪs ᴋᴇʏᴡᴏʀᴅ 😐</i>')
+        await message.reply_text('<i>I Could Not Find Any Files With This Keywords</i>')
         return 
     btn = [[
-       InlineKeyboardButton("ʏᴇs, ᴄᴏɴᴛɪɴᴜᴇ ✅", callback_data=f"killfilesak#{keyword}")
+       InlineKeyboardButton("Yes, Continue", callback_data=f"killfilesak#{keyword}")
        ],[
-       InlineKeyboardButton("ɴᴏ, ᴀʙᴏʀᴛ ᴏᴘᴇʀᴀᴛɪᴏɴ 😢", callback_data="close_data")
+       InlineKeyboardButton("No, Abort Operation", callback_data="close_data")
     ]]
     await message.reply_text(
-        text=f"<b>ᴛᴏᴛᴀʟ ꜰɪʟᴇs ꜰᴏᴜɴᴅ - <code>{total}</code>\n\nᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ?\n\nɴᴏᴛᴇ:- ᴛʜɪs ᴄᴏᴜʟᴅ ʙᴇ ᴀ ᴅᴇsᴛʀᴜᴄᴛɪᴠᴇ ᴀᴄᴛɪᴏɴ!!</b>",
+        text=f"<b>Total Files Found - <code>{total}</code>\n\nDo You Want To Continue?\n\nNote:- This Could Be A Destructive Action!!</b>",
         reply_markup=InlineKeyboardMarkup(btn),
         parse_mode=enums.ParseMode.HTML
     )
@@ -586,7 +586,7 @@ async def deletemultiplefiles(bot, message):
 @Client.on_message(filters.command("del_file"))
 async def delete_files(bot, message):
     if message.from_user.id not in ADMINS:
-        await message.reply('Only the bot owner can use this command... 😑')
+        await message.reply('Only the bot owner can use this command... ')
         return
     chat_type = message.chat.type
     if chat_type != enums.ChatType.PRIVATE:
@@ -604,7 +604,7 @@ async def delete_files(bot, message):
         else:
             not_found_files.append(keyword.strip())
     if deleted_files_count > 0:
-        await message.reply_text(f'<b>{deleted_files_count} file successfully deleted from the database 💥</b>')
+        await message.reply_text(f'<b>{deleted_files_count} file successfully deleted from the database </b>')
     if not_found_files:
         await message.reply_text(f'<b>Files not found in the database - <code>{", ".join(not_found_files)}</code></b>')
 
@@ -613,10 +613,10 @@ async def save_caption(client, message):
     grp_id = message.chat.id
     title = message.chat.title
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+        return await message.reply_text('<b>You Are Not Admin In This Group</b>')
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("<b>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...</b>")
+        return await message.reply_text("<b>Use This Command In Group...</b>")
     try:
         caption = message.text.split(" ", 1)[1]
     except:
@@ -630,9 +630,9 @@ async def save_tutorial(client, message):
     title = message.chat.title
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("<b>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...</b>")
+        return await message.reply_text("<b>Use This Command In Group...</b>")
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+        return await message.reply_text('<b>You Are Not Admin In This Group</b>')
     try:
         tutorial = message.text.split(" ", 1)[1]
     except:
@@ -645,13 +645,13 @@ async def set_shortner(c, m):
     grp_id = m.chat.id
     chat_type = m.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await m.reply_text("<b>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...</b>")
+        return await m.reply_text("<b>Use This Command In Group...</b>")
     if not await is_check_admin(c, grp_id, m.from_user.id):
-        return await m.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')        
+        return await m.reply_text('<b>You Are Not Admin In This Group</b>')        
     if len(m.text.split()) == 1:
         await m.reply("<b>Use this command like this - \n\n`/set_shortner tnshort.net 06b24eb6bbb025713cd522fb3f696b6d5de11354`</b>")
         return        
-    sts = await m.reply("<b>♻️ ᴄʜᴇᴄᴋɪɴɢ...</b>")
+    sts = await m.reply("<b>Checking...</b>")
     await asyncio.sleep(1.2)
     await sts.delete()
     try:
@@ -662,7 +662,7 @@ async def set_shortner(c, m):
             SHORT_LINK = resp['shortenedUrl']
         await save_group_settings(grp_id, 'shortner', URL)
         await save_group_settings(grp_id, 'api', API)
-        await m.reply_text(f"<b><u>✓ sᴜᴄᴄᴇssꜰᴜʟʟʏ ʏᴏᴜʀ sʜᴏʀᴛɴᴇʀ ɪs ᴀᴅᴅᴇᴅ</u>\n\nᴅᴇᴍᴏ - {SHORT_LINK}\n\nsɪᴛᴇ - `{URL}`\n\nᴀᴘɪ - `{API}`</b>", quote=True)
+        await m.reply_text(f"<b><u>Successfully Your Shortener Is Added</u>\n\nDemo - {SHORT_LINK}\n\nSite - `{URL}`\n\nApi - `{API}`</b>", quote=True)
         user_id = m.from_user.id
         user_info = f"@{m.from_user.username}" if m.from_user.username else f"{m.from_user.mention}"
         link = (await c.get_chat(m.chat.id)).invite_link
@@ -672,20 +672,20 @@ async def set_shortner(c, m):
     except Exception as e:
         await save_group_settings(grp_id, 'shortner', SHORTENER_WEBSITE)
         await save_group_settings(grp_id, 'api', SHORTENER_API)
-        await m.reply_text(f"<b><u>💢 ᴇʀʀᴏʀ ᴏᴄᴄᴏᴜʀᴇᴅ!!</u>\n\nᴀᴜᴛᴏ ᴀᴅᴅᴇᴅ ʙᴏᴛ ᴏᴡɴᴇʀ ᴅᴇꜰᴜʟᴛ sʜᴏʀᴛɴᴇʀ\n\nɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴄʜᴀɴɢᴇ ᴛʜᴇɴ ᴜsᴇ ᴄᴏʀʀᴇᴄᴛ ꜰᴏʀᴍᴀᴛ ᴏʀ ᴀᴅᴅ ᴠᴀʟɪᴅ sʜᴏʀᴛʟɪɴᴋ ᴅᴏᴍᴀɪɴ ɴᴀᴍᴇ & ᴀᴘɪ\n\nʏᴏᴜ ᴄᴀɴ ᴀʟsᴏ ᴄᴏɴᴛᴀᴄᴛ ᴏᴜʀ <a href=https://t.me/+EHl6mMfmjHdhZTE9>sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> ꜰᴏʀ sᴏʟᴠᴇ ᴛʜɪs ɪssᴜᴇ...\n\nʟɪᴋᴇ -\n\n`/set_shortner mdiskshortner.link e7beb3c8f756dfa15d0bec495abc65f58c0dfa95`\n\n💔 ᴇʀʀᴏʀ - <code>{e}</code></b>", quote=True)
+        await m.reply_text(f"<b><u>Error Occurred!!</u>\n\nAuto Added Bot Owner Default Shortner\n\nIf You Want Change Then Use correct Format Or Add Valid Shortlink Domain Name& Api\n\nYou Can Also Contact Our<a href=https://t.me/+EHl6mMfmjHdhZTE9>sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> ꜰᴏʀ sᴏʟᴠᴇ ᴛʜɪs ɪssᴜᴇ...\n\nʟɪᴋᴇ -\n\n`/set_shortner mdiskshortner.link e7beb3c8f756dfa15d0bec495abc65f58c0dfa95`\n\n💔 ᴇʀʀᴏʀ - <code>{e}</code></b>", quote=True)
 
 @Client.on_message(filters.command('set_shortner_2'))
 async def set_shortner_2(c, m):
     grp_id = m.chat.id
     chat_type = m.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await m.reply_text("<b>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...</b>")
+        return await m.reply_text("<b>Use This Command In Group...</b>")
     if not await is_check_admin(c, grp_id, m.from_user.id):
-        return await m.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+        return await m.reply_text('<b>You Are Not Admin In This Group</b>')
     if len(m.text.split()) == 1:
         await m.reply("<b>Use this command like this - \n\n`/set_shortner_2 tnshort.net 06b24eb6bbb025713cd522fb3f696b6d5de11354`</b>")
         return
-    sts = await m.reply("<b>♻️ ᴄʜᴇᴄᴋɪɴɢ...</b>")
+    sts = await m.reply("<b>Checking...</b>")
     await asyncio.sleep(1.2)
     await sts.delete()
     try:
