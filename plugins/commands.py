@@ -696,7 +696,7 @@ async def set_shortner_2(c, m):
             SHORT_LINK = resp['shortenedUrl']
         await save_group_settings(grp_id, 'shortner_two', URL)
         await save_group_settings(grp_id, 'api_two', API)
-        await m.reply_text(f"<b><u>✅ sᴜᴄᴄᴇssꜰᴜʟʟʏ ʏᴏᴜʀ sʜᴏʀᴛɴᴇʀ ɪs ᴀᴅᴅᴇᴅ</u>\n\nᴅᴇᴍᴏ - {SHORT_LINK}\n\nsɪᴛᴇ - `{URL}`\n\nᴀᴘɪ - `{API}`</b>", quote=True)
+        await m.reply_text(f"<b><u>Successfully Your Shortner Is Added</u>\n\nDemo - {SHORT_LINK}\n\nSite - `{URL}`\n\n Api - `{API}`</b>", quote=True)
         user_id = m.from_user.id
         user_info = f"@{m.from_user.username}" if m.from_user.username else f"{m.from_user.mention}"
         link = (await c.get_chat(m.chat.id)).invite_link
@@ -706,37 +706,37 @@ async def set_shortner_2(c, m):
     except Exception as e:
         await save_group_settings(grp_id, 'shortner_two', SHORTENER_WEBSITE2)
         await save_group_settings(grp_id, 'api_two', SHORTENER_API2)
-        await m.reply_text(f"<b><u>💢 ᴇʀʀᴏʀ ᴏᴄᴄᴏᴜʀᴇᴅ!!</u>\n\nᴀᴜᴛᴏ ᴀᴅᴅᴇᴅ ʙᴏᴛ ᴏᴡɴᴇʀ ᴅᴇꜰᴜʟᴛ sʜᴏʀᴛɴᴇʀ\n\nɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴄʜᴀɴɢᴇ ᴛʜᴇɴ ᴜsᴇ ᴄᴏʀʀᴇᴄᴛ ꜰᴏʀᴍᴀᴛ ᴏʀ ᴀᴅᴅ ᴠᴀʟɪᴅ sʜᴏʀᴛʟɪɴᴋ ᴅᴏᴍᴀɪɴ ɴᴀᴍᴇ & ᴀᴘɪ\n\nʏᴏᴜ ᴄᴀɴ ᴀʟsᴏ ᴄᴏɴᴛᴀᴄᴛ ᴏᴜʀ <a href=https://t.me/+EHl6mMfmjHdhZTE9>sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> ꜰᴏʀ sᴏʟᴠᴇ ᴛʜɪs ɪssᴜᴇ...\n\nʟɪᴋᴇ -\n\n`/set_shortner_2 mdiskshortner.link e7beb3c8f756dfa15d0bec495abc65f58c0dfa95`\n\n💔 ᴇʀʀᴏʀ - <code>{e}</code></b>", quote=True)
+        await m.reply_text(f"<b><u>Error Occured!!</u>\n\nAuto Added Bot Owner Default Shortner \n\nIf You Want Change Then Use Correct Format Or Add Valid Shortlink Domain Name & Api\n\nYou Can Also Contact Our<a href=https://t.me/+EHl6mMfmjHdhZTE9>Support Group</a> For Solve This Issues...\n\nLike -\n\n`/set_shortner_2 mdiskshortner.link e7beb3c8f756dfa15d0bec495abc65f58c0dfa95`\n\nError - <code>{e}</code></b>", quote=True)
 
 @Client.on_message(filters.command('set_log_channel'))
 async def set_log(client, message):
     grp_id = message.chat.id
     title = message.chat.title
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("<b>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...</b>")
+        return await message.reply_text("<b>Use This Command In Group...</b>")
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+        return await message.reply_text('<b>You Are Not Admin In This Group</b>')
     if len(message.text.split()) == 1:
         await message.reply("<b>Use this command like this - \n\n`/set_log_channel -100******`</b>")
         return
-    sts = await message.reply("<b>♻️ ᴄʜᴇᴄᴋɪɴɢ...</b>")
+    sts = await message.reply("<b>Checking...</b>")
     await asyncio.sleep(1.2)
     await sts.delete()
     chat_type = message.chat.type
     try:
         log = int(message.text.split(" ", 1)[1])
     except IndexError:
-        return await message.reply_text("<b><u>ɪɴᴠᴀɪʟᴅ ꜰᴏʀᴍᴀᴛ!!</u>\n\nᴜsᴇ ʟɪᴋᴇ ᴛʜɪs - `/set_log_channel -100xxxxxxxx`</b>")
+        return await message.reply_text("<b><u>Invalid Format!!</u>\n\nUse Like This - `/set_log_channel -100xxxxxxxx`</b>")
     except ValueError:
-        return await message.reply_text('<b>ᴍᴀᴋᴇ sᴜʀᴇ ɪᴅ ɪs ɪɴᴛᴇɢᴇʀ...</b>')
+        return await message.reply_text('<b>Make Sure Id Is Integer...</b>')
     try:
-        t = await client.send_message(chat_id=log, text="<b>ʜᴇʏ ᴡʜᴀᴛ's ᴜᴘ!!</b>")
+        t = await client.send_message(chat_id=log, text="<b>Hey Wassup!!!</b>")
         await asyncio.sleep(3)
         await t.delete()
     except Exception as e:
-        return await message.reply_text(f'<b><u>😐 ᴍᴀᴋᴇ sᴜʀᴇ ᴛʜɪs ʙᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜᴀᴛ ᴄʜᴀɴɴᴇʟ...</u>\n\n💔 ᴇʀʀᴏʀ - <code>{e}</code></b>')
+        return await message.reply_text(f'<b><u>Make Sure Admin In That Channel...</u>\n\nError - <code>{e}</code></b>')
     await save_group_settings(grp_id, 'log', log)
-    await message.reply_text(f"<b>✅ sᴜᴄᴄᴇssꜰᴜʟʟʏ sᴇᴛ ʏᴏᴜʀ ʟᴏɢ ᴄʜᴀɴɴᴇʟ ꜰᴏʀ {title}\n\nɪᴅ - `{log}`</b>", disable_web_page_preview=True)
+    await message.reply_text(f"<b>Successfully Set Your Log Channel{title}\n\nɪᴅ - `{log}`</b>", disable_web_page_preview=True)
     user_id = message.from_user.id
     user_info = f"@{message.from_user.username}" if message.from_user.username else f"{message.from_user.mention}"
     link = (await client.get_chat(message.chat.id)).invite_link
@@ -750,36 +750,36 @@ async def all_settings(client, message):
     title = message.chat.title
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("<b>ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...</b>")
+        return await message.reply_text("<b>Use This Command In Group ...</b>")
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+        return await message.reply_text('<b>You Are Not Admin In This Group</b>')
     settings = await get_settings(grp_id)
-    text = f"""<b><u>⚙️ ʏᴏᴜʀ sᴇᴛᴛɪɴɢs ꜰᴏʀ -</u> {title}
+    text = f"""<b><u>Your Setting For-</u> {title}
 
-<u>✅️ 1sᴛ ᴠᴇʀɪꜰʏ sʜᴏʀᴛɴᴇʀ ɴᴀᴍᴇ/ᴀᴘɪ</u>
-ɴᴀᴍᴇ - `{settings["shortner"]}`
-ᴀᴘɪ - `{settings["api"]}`
+<u>1st Verify Shortner Name/Api</u>
+Name - `{settings["shortner"]}`
+Api - `{settings["api"]}`
 
-<u>✅️ 2ɴᴅ ᴠᴇʀɪꜰʏ sʜᴏʀᴛɴᴇʀ ɴᴀᴍᴇ/ᴀᴘɪ</u>
-ɴᴀᴍᴇ - `{settings["shortner_two"]}`
-ᴀᴘɪ - `{settings["api_two"]}`
+<u>2nd Verify Shortner Name/Api</u>
+Name - `{settings["shortner_two"]}`
+Api - `{settings["api_two"]}`
 
-<u>✅️ 3ʀᴅ ᴠᴇʀɪꜰʏ sʜᴏʀᴛɴᴇʀ ɴᴀᴍᴇ/ᴀᴘɪ</u>
-ɴᴀᴍᴇ - `{settings["shortner_three"]}`
-ᴀᴘɪ - `{settings["api_three"]}`
+<u> 3rd Verify Shortner Name/Api</u>
+Name - `{settings["shortner_three"]}`
+Api - `{settings["api_three"]}`
 
-📝 ʟᴏɢ ᴄʜᴀɴɴᴇʟ ɪᴅ - `{settings['log']}`
+Log Chanel Id - `{settings['log']}`
 
-📍 ᴛᴜᴛᴏʀɪᴀʟ ʟɪɴᴋ - {settings['tutorial']}
+Tutorial Link - {settings['tutorial']}
 
-🎯 ɪᴍᴅʙ ᴛᴇᴍᴘʟᴀᴛᴇ - `{settings['template']}`
+IMDb Template - `{settings['template']}`
 
-📂 ꜰɪʟᴇ ᴄᴀᴘᴛɪᴏɴ - `{settings['caption']}`</b>"""
+File Caption - `{settings['caption']}`</b>"""
     
     btn = [[
-        InlineKeyboardButton("ʀᴇꜱᴇᴛ ᴅᴀᴛᴀ", callback_data="reset_grp_data")
+        InlineKeyboardButton("Reset Data", callback_data="reset_grp_data")
     ],[
-        InlineKeyboardButton("ᴄʟᴏsᴇ", callback_data="close_data")
+        InlineKeyboardButton("Close", callback_data="close_data")
     ]]
     reply_markup=InlineKeyboardMarkup(btn)
     dlt=await message.reply_text(text, reply_markup=reply_markup, disable_web_page_preview=True)
@@ -793,17 +793,17 @@ async def set_shortner_3(c, m):
         return await m.reply_text("<b>Use this command in Your group ! Not in Private</b>")
     if len(m.text.split()) == 1:
         return await m.reply("<b>Use this command like this - \n\n`/set_shortner_3 tnshort.net 06b24eb6bbb025713cd522fb3f696b6d5de11354`</b>")
-    sts = await m.reply("<b>♻️ ᴄʜᴇᴄᴋɪɴɢ...</b>")
+    sts = await m.reply("<b>Checking...</b>")
     await sts.delete()
     userid = m.from_user.id if m.from_user else None
     if not userid:
-        return await m.reply(f"<b>⚠️ ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ᴏꜰ ᴛʜɪs ɢʀᴏᴜᴘ</b>")
+        return await m.reply(f"<b>You Are Not Admin In This Group</b>")
     grp_id = m.chat.id
     #check if user admin or not
     if not await is_check_admin(c, grp_id, userid):
-        return await m.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+        return await m.reply_text('<b> You Are Not Admin</b>')
     if len(m.command) == 1:
-        await m.reply_text("<b>ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ ᴀᴅᴅ sʜᴏʀᴛɴᴇʀ & ᴀᴘɪ\n\nᴇx - `/set_shortner_3 mdiskshortner.link e7beb3c8f756dfa15d0bec495abc65f58c0dfa95`</b>", quote=True)
+        await m.reply_text("<b>Use This Command In Group & ᴀᴘɪ\n\nᴇx - `/set_shortner_3 mdiskshortner.link e7beb3c8f756dfa15d0bec495abc65f58c0dfa95`</b>", quote=True)
         return
     try:
         URL = m.command[1]
@@ -813,7 +813,7 @@ async def set_shortner_3(c, m):
             SHORT_LINK = resp['shortenedUrl']
         await save_group_settings(grp_id, 'shortner_three', URL)
         await save_group_settings(grp_id, 'api_three', API)
-        await m.reply_text(f"<b><u>✅ sᴜᴄᴄᴇssꜰᴜʟʟʏ ʏᴏᴜʀ sʜᴏʀᴛɴᴇʀ ɪs ᴀᴅᴅᴇᴅ</u>\n\nᴅᴇᴍᴏ - {SHORT_LINK}\n\nsɪᴛᴇ - `{URL}`\n\nᴀᴘɪ - `{API}`</b>", quote=True)
+        await m.reply_text(f"<b><u>Successfully Your Shirtner Added</u>\n\nDemo - {SHORT_LINK}\n\nSite - `{URL}`\n\nApi - `{API}`</b>", quote=True)
         user_id = m.from_user.id
         if m.from_user.username:
             user_info = f"@{m.from_user.username}"
@@ -826,20 +826,20 @@ async def set_shortner_3(c, m):
     except Exception as e:
         await save_group_settings(grp_id, 'shortner_three', SHORTENER_WEBSITE3)
         await save_group_settings(grp_id, 'api_three', SHORTENER_API3)
-        await m.reply_text(f"<b><u>💢 ᴇʀʀᴏʀ ᴏᴄᴄᴏᴜʀᴇᴅ!!</u>\n\nᴀᴜᴛᴏ ᴀᴅᴅᴇᴅ ʙᴏᴛ ᴏᴡɴᴇʀ ᴅᴇꜰᴜʟᴛ sʜᴏʀᴛɴᴇʀ\n\nɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴄʜᴀɴɢᴇ ᴛʜᴇɴ ᴜsᴇ ᴄᴏʀʀᴇᴄᴛ ꜰᴏʀᴍᴀᴛ ᴏʀ ᴀᴅᴅ ᴠᴀʟɪᴅ sʜᴏʀᴛʟɪɴᴋ ᴅᴏᴍᴀɪɴ ɴᴀᴍᴇ & ᴀᴘɪ\n\nʏᴏᴜ ᴄᴀɴ ᴀʟsᴏ ᴄᴏɴᴛᴀᴄᴛ ᴏᴜʀ <a href=https://t.me/+EHl6mMfmjHdhZTE9>sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> ꜰᴏʀ sᴏʟᴠᴇ ᴛʜɪs ɪssᴜᴇ...\n\nʟɪᴋᴇ -\n\n`/set_shortner_3 mdiskshortner.link e7beb3c8f756dfa15d0bec495abc65f58c0dfa95`\n\n💔 ᴇʀʀᴏʀ - <code>{e}</code></b>", quote=True)
+        await m.reply_text(f"<b><u>Error Occurred!!</u>\n\nAito Added  Bot Owner Default Shortner\n\nIf You Want To Change Then Use Correct Format Or Use Valid Domain Name& Api\n\nYou Can Also Contact Our<a href=https://t.me/+EHl6mMfmjHdhZTE9>sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> ꜰᴏʀ sᴏʟᴠᴇ ᴛʜɪs ɪssᴜᴇ...\n\nʟɪᴋᴇ -\n\n`/set_shortner_3 mdiskshortner.link e7beb3c8f756dfa15d0bec495abc65f58c0dfa95`\n\n💔 ᴇʀʀᴏʀ - <code>{e}</code></b>", quote=True)
 
 @Client.on_message(filters.command('set_time_2'))
 async def set_time_2(client, message):
     userid = message.from_user.id if message.from_user else None
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("<b>ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...</b>")       
+        return await message.reply_text("<b>Use This Command In Group...</b>")       
     if not userid:
-        return await message.reply("<b>ʏᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜꜱ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ...</b>")
+        return await message.reply("<b>You Are Anonymous Admin In This Group...</b>")
     grp_id = message.chat.id
     title = message.chat.title
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+        return await message.reply_text('<b>You Are Not Admin In this Group</b>')
     try:
         time = int(message.text.split(" ", 1)[1])
     except:
@@ -851,14 +851,14 @@ async def set_time_2(client, message):
 async def set_time_3(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
-        return await message.reply("<b>ʏᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜꜱ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ...</b>")
+        return await message.reply("<b>You Are Anonymous Admin In This Group...</b>")
     chat_type = message.chat.type
     if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        return await message.reply_text("<b>ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...</b>")       
+        return await message.reply_text("<b>Use This Command In Group...</b>")       
     grp_id = message.chat.id
     title = message.chat.title
     if not await is_check_admin(client, grp_id, message.from_user.id):
-        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+        return await message.reply_text('<b>You Are Not Admin In This Group</b>')
     try:
         time = int(message.text.split(" ", 1)[1])
     except:
