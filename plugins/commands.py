@@ -352,8 +352,8 @@ async def start(client:Client, message):
         caption=f_caption,
         reply_markup=InlineKeyboardMarkup(btn)
     )
-    delCap = "<b>Your File Will Be Deleted After {} Kindly Forward This File In Saved Messages!</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} ᴍɪɴᴜᴛᴇs' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} sᴇᴄᴏɴᴅs')
-    afterDelCap = "<b>Youre File Is Deleted After {} To Avoid Copyright Violation !</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} ᴍɪɴᴜᴛᴇs' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} sᴇᴄᴏɴᴅs') 
+    delCap = "<b>Your File Will Be Deleted After {} Kindly Forward This File In Saved Messages!</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} Minutes' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} Seconds')
+    afterDelCap = "<b>Youre File Is Deleted After {} To Avoid Copyright Violation !</b>".format(f'{FILE_AUTO_DEL_TIMER / 60} Minutes' if FILE_AUTO_DEL_TIMER >= 60 else f'{FILE_AUTO_DEL_TIMER} Seconds') 
     replyed = await message.reply(
         delCap,
         reply_to_message_id= toDel.id)
@@ -672,7 +672,7 @@ async def set_shortner(c, m):
     except Exception as e:
         await save_group_settings(grp_id, 'shortner', SHORTENER_WEBSITE)
         await save_group_settings(grp_id, 'api', SHORTENER_API)
-        await m.reply_text(f"<b><u>Error Occurred!!</u>\n\nAuto Added Bot Owner Default Shortner\n\nIf You Want Change Then Use correct Format Or Add Valid Shortlink Domain Name& Api\n\nYou Can Also Contact Our<a href=https://t.me/+EHl6mMfmjHdhZTE9>sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> ꜰᴏʀ sᴏʟᴠᴇ ᴛʜɪs ɪssᴜᴇ...\n\nʟɪᴋᴇ -\n\n`/set_shortner mdiskshortner.link e7beb3c8f756dfa15d0bec495abc65f58c0dfa95`\n\n💔 ᴇʀʀᴏʀ - <code>{e}</code></b>", quote=True)
+        await m.reply_text(f"<b><u>Error Occurred!!</u>\n\nAuto Added Bot Owner Default Shortner\n\nIf You Want Change Then Use correct Format Or Add Valid Shortlink Domain Name& Api\n\nYou Can Also Contact Our<a href=https://t.me/+EHl6mMfmjHdhZTE9>Support Group</a> For Solve This Issue...\n\nLike -\n\n`/set_shortner mdiskshortner.link e7beb3c8f756dfa15d0bec495abc65f58c0dfa95`\n\nError - <code>{e}</code></b>", quote=True)
 
 @Client.on_message(filters.command('set_shortner_2'))
 async def set_shortner_2(c, m):
@@ -826,7 +826,7 @@ async def set_shortner_3(c, m):
     except Exception as e:
         await save_group_settings(grp_id, 'shortner_three', SHORTENER_WEBSITE3)
         await save_group_settings(grp_id, 'api_three', SHORTENER_API3)
-        await m.reply_text(f"<b><u>Error Occurred!!</u>\n\nAito Added  Bot Owner Default Shortner\n\nIf You Want To Change Then Use Correct Format Or Use Valid Domain Name& Api\n\nYou Can Also Contact Our<a href=https://t.me/+EHl6mMfmjHdhZTE9>sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> ꜰᴏʀ sᴏʟᴠᴇ ᴛʜɪs ɪssᴜᴇ...\n\nʟɪᴋᴇ -\n\n`/set_shortner_3 mdiskshortner.link e7beb3c8f756dfa15d0bec495abc65f58c0dfa95`\n\n💔 ᴇʀʀᴏʀ - <code>{e}</code></b>", quote=True)
+        await m.reply_text(f"<b><u>Error Occurred!!</u>\n\nAito Added  Bot Owner Default Shortner\n\nIf You Want To Change Then Use Correct Format Or Use Valid Domain Name& Api\n\nYou Can Also Contact Our<a href=https://t.me/+EHl6mMfmjHdhZTE9>Support Group</a> For Solve This Issue...\n\nLike -\n\n`/set_shortner_3 mdiskshortner.link e7beb3c8f756dfa15d0bec495abc65f58c0dfa95`\n\nError - <code>{e}</code></b>", quote=True)
 
 @Client.on_message(filters.command('set_time_2'))
 async def set_time_2(client, message):
