@@ -1,10 +1,10 @@
 class script(object):
-    START_TXT = """<b> Hello 👋 {} {},
+    START_TXT = """<b> HELLO 👋 {} {},
     
-<blockquote>Im Movie Providing Bot ,I Can't Give You Movie Here. I Work Only In Group.</blockquote>
-<blockquote>Join My Group & Search Your Movie 🍿</blockquote>
+My Name Is Ai Movie Search Bot. 
+I Can Provide Any Movie Free. Just Search By Movie Name 🍿
 
-Join For Movie : <a href='https://telegram.me/HD_Movies_Group_2024'>Hd Movies</a>
+Join For Search Movie : <a href='https://telegram.me/HD_Movies_Group_2024'>Hd Movies</a>
 </b>"""
     
     HELP_TXT = """<b>Click On The Button Below To Get Documentation About Specific Module..</b>"""
@@ -47,14 +47,14 @@ Now It's Done .I will Compele Your User To Join Your Channel/Group, Amd I Will N
 
     SUPPORT_GRP_MOVIE_TEXT = '''<b>HAY {}
 
-I FOUND {} RESULTS 🎁,
-BUT I CAN'T SEMD HERE 🤞
-PLEASE JOIN OUR REQUEAT GROUP TO GET ✨</b>'''
+I Found Your {} Result 🎁, 
+But I Can't Give You Movie Here 😔 
+Please Join Our Request Group To Get 🍿</b>'''
 
     
     REF_LINK = '''🔗 <b>Hᴇʀᴇ ɪs ᴏᴜʀ ʀᴇғᴇʀʀᴀʟ ʟɪɴᴋ: <code>https://telegram.me/{}?start=Owner_Sohel-{}</code>
     
-👥 Fᴏʀ ᴇᴠᴇʀʏ ɴᴇᴡ ᴜsᴇʀ ᴡʜᴏ sᴛᴀʀᴛs ᴛʜᴇ ʙᴏᴛ ᴜsɪɴɢ ᴛʜɪs ʟɪɴᴋ, ʏᴏᴜ ᴡɪʟʟ ʀᴇᴄᴇɪᴠᴇ 100 ᴘᴏɪɴᴛs. 
+👥 Fᴏʀ ᴇᴠᴇʀʏ ɴᴇᴡ ᴜsᴇʀ ᴡʜᴏ sᴛᴀʀᴛs ᴛʜᴇ ʙᴏᴛ ᴜsɪɴɢ ᴛʜɪs ʟɪɴᴋ, ᴡɪʟʟ ʀᴇᴄᴇɪᴠᴇ 100 ᴘᴏɪɴᴛs. 
 
 🎉 Oɴᴄᴇ ʏᴏᴜ ʀᴇᴀᴄʜ {} ᴘᴏɪɴᴛs, ʏᴏᴜ ᴡɪʟʟ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ɢᴇᴛ ᴘʀᴇᴍɪᴜᴍ ᴀᴄᴄᴇss.</b>'''
     REF_PREMEUM = '''<b>ᴄᴏɴɢʀᴀᴛᴜʟᴀᴛɪᴏɴs!\n\nYᴏᴜ'ᴠᴇ ʀᴇᴀᴄʜᴇᴅ {} ᴘᴏɪɴᴛs, ɴᴏᴡ ʏᴏᴜ ᴀʀᴇ ᴇʟɪɢɪʙʟᴇ ғᴏʀ ᴘʀᴇᴍɪᴜᴍ ᴀᴄᴄᴇss. Yᴏᴜʀ ᴘᴏɪɴᴛs ʜᴀᴠᴇ ʙᴇᴇɴ ʀᴇsᴇᴛ. Rᴇғᴇʀ ᴍᴏʀᴇ ᴛᴏ ᴇxᴛᴇɴᴅ ᴘʀᴇᴍɪᴜᴍ ᴀᴄᴄᴇss ғᴜʀᴛʜᴇʀ.\n\nᴜsᴇ /myplan ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴘʀᴇᴍɪᴜᴍ ᴘʟᴀɴ</b>'''
@@ -114,7 +114,7 @@ User - {}"""
 
     ALRT_TXT = """JALDI YAHA SA HATO !"""
 
-    OLD_ALRT_TXT = """YOU ARE USING MY OND MESSAGES..SEND A NEW REQUEAT.."""
+    OLD_ALRT_TXT = """YOU ARE USING MY OWN MESSAGES..SEND A NEW REQUEAT.."""
 
     NO_RESULT_TXT = """<b>THIS MESSAGE IS NOT RELEASED OR ADDED IM MY DATABASE 🙄</b>"""
     
