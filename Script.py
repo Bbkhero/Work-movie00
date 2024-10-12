@@ -1,24 +1,23 @@
 class script(object):
     START_TXT = """<b> Hello 👋 {} {},
     
-<blockquote>IM THE MOST ADVANCE AI POWERD 🤖 AUTO FILTEE BOT.
-SEMD ME ANY MOVIE OR SEEISE NAME AMD SEE MY MAGIC..✨</blockquote>
-<blockquote>FOR MORE DETAILS USE THE BUTTONS BELOW 🤞</blockquote>
+<blockquote>Im Movie Providing Bot ,I Can't Give You Movie Here. I Work Only In Group.</blockquote>
+<blockquote>Join My Group & Search Your Movie 🍿</blockquote>
 
-MAINTAINED BY : <a href='https://telegram.me/MOON_GOD_KHONSU'>𝗠ʀ 𝗡ɪɢʜᴛʟ</a>
+Join For Movie : <a href='https://telegram.me/HD_Movies_Group_2024'>Hd Movies</a>
 </b>"""
     
-    HELP_TXT = """<b>CLICK ON THE BUTTONS BELOW TO GET DOCUMENTATION ABOUT SPECIFIC MODULE..</b>"""
+    HELP_TXT = """<b>Click On The Button Below To Get Documentation About Specific Module..</b>"""
     
-    TELE_TXT = """<b>/telegraph - sᴇɴᴅ ᴍᴇ ᴘɪᴄᴛᴜʀᴇ ᴏʀ ᴠɪᴅᴇᴏ ᴜɴᴅᴇʀ (5ᴍʙ)
+    TELE_TXT = """<b>/telegraph - Send Me Pic Or Video (5ᴍʙ)
 
-NOTE - THIS COMMAND WORK IM BOTH GROUPS AND BOT PM</b>"""
-    FSUB_TXT = """<b>• ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴍᴀᴋᴇ ᴍᴇ ᴀɴ ᴀᴅᴍɪɴ 😗
-• ᴍᴀᴋᴇ ᴍᴇ ᴀɴ ᴀᴅᴍɪɴ ɪɴ ʏᴏᴜʀ ᴛᴀʀɢᴇᴛ ғᴏʀᴄᴇ sᴜʙsᴄʀɪʙᴇ ᴄʜᴀɴɴᴇʟ ᴏʀ Gʀᴏᴜᴘ  😉
-• sᴇɴᴅ /fsub ʏᴏᴜʀ_ᴛᴀʀɢᴇᴛ_ᴄʜᴀᴛ_ɪᴅ
-ᴇx: <code>/fsub -1004646464646</code>
+NOTE - This command work for group and bot pm both</b>"""
+    FSUB_TXT = """<b>•Add Me To Your Group And Make Me Admin
+• Make Me Admin In Your Targeted Fsub Channel Or Group
+• Send /fsub Your_Target_Chat_Id
+Ex: <code>/fsub -1004646464646</code>
 
-ɴᴏᴡ ɪᴛ's ᴅᴏɴᴇ.ɪ ᴡɪʟʟ ᴄᴏᴍᴘᴇʟ ʏᴏᴜʀ ᴜsᴇʀs ᴛᴏ ᴊᴏɪɴ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ/ɢʀᴏᴜᴘ, ᴀɴᴅ I ᴡɪʟʟ ɴᴏᴛ ᴘʀᴏᴠɪᴅᴇ ᴀɴʏ ғɪʟᴇs ᴜɴᴛɪʟ ʏᴏᴜʀ ᴜsᴇʀs ᴊᴏɪɴ ʏᴏᴜʀ ᴛᴀʀɢᴇᴛ ᴄʜᴀɴɴᴇʟ.
+Now It's Done .I will Compele Your User To Join Your Channel/Group, Amd I Will Not Provide Any File Until Your Users Join Your Fsub Channel.
 
 ᴛᴏ ᴅɪsᴀʙʟᴇ ғsᴜʙ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ, sɪᴍᴘʟʏ sᴇɴᴅ <code>/del_fsub</code>
 
