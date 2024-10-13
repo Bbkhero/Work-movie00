@@ -31,12 +31,12 @@ async def pm_search(client, message):
         await auto_filter(client, message , pm_mode=True)
     else:
         await message.reply_text(
-        text=f"<b>Hello {message.from_user.mention} Sir/Mam ,\n\nI Cant Give You Movie Here \nI Work in Only Groups</b>",
+        text=f"<b>Hello {message.from_user.mention} Sir/Mam ,\n\nI Cant Give You Movie Here \nI Work in Only Groups \nJoin & Search Your Movie 🍿</b>",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "Support", url=link
+                        "Join Now 🔓", url=link
                     )
                 ]
             ]
