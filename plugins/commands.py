@@ -139,7 +139,7 @@ async def start(client:Client, message):
                 newPoint = await db.get_point(refUserId)
                 if AUTH_CHANNEL and await is_req_subscribed(client, message):
                         buttons = [[
-                            InlineKeyboardButton('Add Me In You Group, url=f'http://t.me/{temp.U_NAME}?startgroup=start')
+                            InlineKeyboardButton('Add Me In You Group, url=f'http://t.me/{temp.U_NAME}?startgroup='start')
                             ],[
                             InlineKeyboardButton('Features', callback_data='features'),
                             InlineKeyboardButton('Buy Premium', callback_data='premium'),
